@@ -1,0 +1,7 @@
+{
+  "name": "@user-context-test/app",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.x"
+  }
+}

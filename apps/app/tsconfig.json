@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": ["../../typings"],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}

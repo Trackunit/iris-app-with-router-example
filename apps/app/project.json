@@ -1,0 +1,43 @@
+{
+  "name": "app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/app/src",
+  "targets": {
+    "build": {
+      "executor": "@trackunit/iris-app-sdk-rspack:build",
+      "options": {
+        "rspackConfig": "apps/app/rspack.config.ts",
+        "outputPath": "dist/apps/app"
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@trackunit/iris-app-sdk-rspack:serve",
+      "options": {
+        "rspackConfig": "apps/app/rspack.config.ts"
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "submitApp": {
+      "executor": "@trackunit/iris-app:submit",
+      "dependsOn": ["build"],
+      "options": {
+        "inputPath": "dist/apps/app"
+      },
+      "outputs": ["{workspaceRoot}/dist/apps/app"]
+    },
+    "unpublishApp": {
+      "executor": "@trackunit/iris-app:unpublish",
+      "options": {
+        "inputPath": "dist/apps/app"
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ],
+      "outputs": ["{workspaceRoot}/dist/apps/app"]
+    }
+  }
+}
